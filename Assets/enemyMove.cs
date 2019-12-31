@@ -15,10 +15,10 @@ public class enemyMove : MonoBehaviour
     void Update()
     {
         Vector3 position = this.transform.position;
-        if (position.x ==  (float)1.22)
+        if (position.x <=  (float)1.22)
         {
              loc = (float)1;
-        }else if(position.x == (float)8.45)
+        }else if(position.x >= (float)8.45)
         {
              loc = (float)0;
         }

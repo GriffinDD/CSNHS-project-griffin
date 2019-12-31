@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    Rigidbody2D rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -15,29 +17,27 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            Vector3 position = this.transform.position;
+            Vector2 position = this.transform.position;
             position.x = position.x - (float).02;
             this.transform.position = position;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            Vector3 position = this.transform.position;
+            Vector2 position = this.transform.position;
             position.x = position.x + (float).02;
             this.transform.position = position;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 position = this.transform.position;
-            position.y = position.y + (float).03;
-            this.transform.position = position;
+            this.rigidbody.AddRelativeForce(Vector2.up * 10);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            gameObject.transform.localScale = new Vector3((float).2, (float).2, (float).2);
+            gameObject.transform.localScale = new Vector2((float).2, (float).2);
         }
         else
         {
-            gameObject.transform.localScale = new Vector3((float).2, (float).4, (float).2);
+            gameObject.transform.localScale = new Vector2((float).2, (float).4);
         }
     }
 }
