@@ -5,6 +5,17 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
     Rigidbody2D rigidbody;
+    public bool check = false;
+    public GameObject playerCube;
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Do something here");
+        if (collision.gameObject.tag == "Floor")
+        {
+            check = false;
+            
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +38,10 @@ public class NewBehaviourScript : MonoBehaviour
             position.x = position.x + (float).02;
             this.transform.position = position;
         }
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)&& !check)
         {
-            this.rigidbody.AddRelativeForce(Vector2.up * 10);
+            check = true;
+            this.rigidbody.velocity = Vector2.up * 4;  
         }
         if (Input.GetKey(KeyCode.S))
         {
