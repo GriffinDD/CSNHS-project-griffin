@@ -5,6 +5,7 @@ using UnityEngine;
 public class enemyMove : MonoBehaviour
 {
     public float loc;
+    public float fire;
     public GameObject player;
     public GameObject bullet;
     // Start is called before the first frame update
@@ -20,10 +21,18 @@ public class enemyMove : MonoBehaviour
         Vector2 position = this.transform.position;
         if (position.x <=  (float)1.22)
         {
+             if(loc == 0)
+            {
+                fire = 0;
+            }
              loc = (float)1;
         }else if(position.x >= (float)8.45)
         {
-             loc = (float)0;
+            if(loc == 1)
+            {
+                fire = 0;
+            }
+            loc = (float)0;
         }
         if(loc == (float)1)
         {
@@ -37,22 +46,30 @@ public class enemyMove : MonoBehaviour
         Vector2 playerpos = player.transform.position;
         if(playerpos.x <= position.x && loc == 0 && (position.y <= playerpos.y+(float).75 && position.y >= playerpos.y-(float).75))
         {
-            float xpos = position.x;
-            float ypos = position.y;
-            Vector2 newpos = new Vector2(xpos - (float).1, ypos);
-            GameObject clone;
-            clone = Instantiate(bullet);
-            clone.transform.position = newpos;
-            clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right*-1;
+            if (fire <= 10)
+            {
+                float xpos = position.x;
+                float ypos = position.y;
+                Vector2 newpos = new Vector2(xpos - (float).1, ypos);
+                GameObject clone;
+                clone = Instantiate(bullet);
+                clone.transform.position = newpos;
+                clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right * -1;
+                fire = fire + 1;
+            }
         }else if (playerpos.x >= position.x && loc == 1 && (position.y <= playerpos.y + (float).75 && position.y >= playerpos.y - (float).75))
         {
-            float xpos = position.x;
-            float ypos = position.y;
-            Vector2 newpos = new Vector2(xpos - (float).1, ypos);
-            GameObject clone;
-            clone = Instantiate(bullet);
-            clone.transform.position = newpos;
-            clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right;
+            if (fire <= 10)
+            {
+                float xpos = position.x;
+                float ypos = position.y;
+                Vector2 newpos = new Vector2(xpos - (float).1, ypos);
+                GameObject clone;
+                clone = Instantiate(bullet);
+                clone.transform.position = newpos;
+                clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right;
+                fire = fire + 1;
+            }
         }
 
     }

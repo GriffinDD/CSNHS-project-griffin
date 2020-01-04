@@ -7,13 +7,12 @@ public class NewBehaviourScript : MonoBehaviour
     Rigidbody2D rigidbody;
     public bool check = false;
     public GameObject bullet;
-    void OnCollisionEnter(Collision collision)
+    public float face = 0;
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Do something here");
         if (collision.gameObject.tag == "Floor")
         {
             check = false;
-            
         }
     }
 
@@ -32,12 +31,14 @@ public class NewBehaviourScript : MonoBehaviour
             Vector2 position = this.transform.position;
             position.x = position.x - (float).02;
             this.transform.position = position;
+            face = 1;
         }
         if (Input.GetKey(KeyCode.D))
         {
             Vector2 position = this.transform.position;
             position.x = position.x + (float).02;
             this.transform.position = position;
+            face = 0;
         }
         if (Input.GetKeyDown(KeyCode.W)&& !check)
         {
@@ -57,11 +58,22 @@ public class NewBehaviourScript : MonoBehaviour
             Vector2 position = this.transform.position;
             float xpos = position.x;
             float ypos = position.y;
-            Vector2 newpos = new Vector2(xpos+(float).1,ypos);
-            GameObject clone;
-            clone = Instantiate(bullet);
-            clone.transform.position = newpos;
-            clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right;
+            if(face == 0)
+            {
+                Vector2 newpos = new Vector2(xpos + (float).1, ypos);
+                GameObject clone;
+                clone = Instantiate(bullet);
+                clone.transform.position = newpos;
+                clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right;
+            }else if(face == 1)
+            {
+                Vector2 newpos = new Vector2(xpos - (float).1, ypos);
+                GameObject clone;
+                clone = Instantiate(bullet);
+                clone.transform.position = newpos;
+                clone.GetComponent<Rigidbody2D>().velocity = 35 * transform.localScale.x * clone.transform.right * -1;
+            }
+            
         }
     }
     }
