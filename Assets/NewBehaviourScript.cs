@@ -7,13 +7,11 @@ public class NewBehaviourScript : MonoBehaviour
     Rigidbody2D rigidbody;
     public bool check = false;
     public GameObject bullet;
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Do something here");
         if (collision.gameObject.tag == "Floor")
         {
             check = false;
-            
         }
     }
 
