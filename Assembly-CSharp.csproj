@@ -62,8 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\bulletScript.cs" />
     <Compile Include="Assets\enemyMove.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
+    <Compile Include="Assets\PlatformPhysics.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Griffin/Documents/CSNHS-project-griffin2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
