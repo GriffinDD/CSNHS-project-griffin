@@ -21,9 +21,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            health = health - (float).6;
             HealthInt = HealthInt - 1;
-            hplocation = hp.transform.position.x - (float)1.2;
+            hplocation = hp.transform.position.x - (float)1;
             hp.transform.position = new Vector3(hplocation, (float)4.577, (float)-4.116654);
             text.transform.position = new Vector2((float)-9.12, (float)4.7);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
@@ -36,8 +35,10 @@ public class NewBehaviourScript : MonoBehaviour
             bullet = GameObject.Find("Bullet");
             rigidbody = GetComponent<Rigidbody2D>();
             Instantiate(hp);
+            hplocation = (float)-4.5;
+            hp.transform.position = new Vector3(hplocation, (float)4.577, (float)-4.116654);
             Instantiate(text);
-            health = (float)6;
+            health = (float)10;
             HealthInt = 10;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             hp.GetComponent<Renderer>().material.color = Color.green;
