@@ -15,6 +15,7 @@ public class NewBehaviourScript : MonoBehaviour
     public float face = 0;
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Vector2 position = this.transform.position;
         if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Platform")
         {
             check = false;
@@ -22,32 +23,38 @@ public class NewBehaviourScript : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             HealthInt = HealthInt - 1;
-            hplocation = hp.transform.position.x - (float)1;
-            hp.transform.position = new Vector3(hplocation, (float)4.577, (float)-4.116654);
-            text.transform.position = new Vector2((float)-9.12, (float)4.7);
+            health = health - 1;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
+            hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
+            text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
         }
     }
         void Start()
         {
+            Vector2 position = this.transform.position;
             hp = GameObject.Find("HealthBar");
             text = GameObject.Find("HealthText");
             bullet = GameObject.Find("Bullet");
             rigidbody = GetComponent<Rigidbody2D>();
             Instantiate(hp);
-            hplocation = (float)-4.5;
-            hp.transform.position = new Vector3(hplocation, (float)4.577, (float)-4.116654);
+            hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
             Instantiate(text);
             health = (float)10;
             HealthInt = 10;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             hp.GetComponent<Renderer>().material.color = Color.green;
+            text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
             text.GetComponent<TextMesh>().characterSize = (float).2;
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
         }
         void Update()
         {
-            if (Input.GetKey(KeyCode.A))
+        Vector2 HealthPosition = this.transform.position;
+        hp.transform.localScale = new Vector3(health, (float).5, 1);
+        hp.transform.position = new Vector3(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577, (float)-4.116654);
+        text.transform.position = new Vector2(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577);
+        if (Input.GetKey(KeyCode.A))
             {
                 Vector2 position = this.transform.position;
                 position.x = position.x - (float).02;

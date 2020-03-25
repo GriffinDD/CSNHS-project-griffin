@@ -68,6 +68,7 @@
     <Compile Include="Assets\enemyMove.cs" />
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\PlatformPhysics.cs" />
+    <Compile Include="Assets\Player2.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Griffin/Documents/CSNHS-project-griffin2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
