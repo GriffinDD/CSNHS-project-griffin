@@ -55,7 +55,7 @@ public class Player2 : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {    
+        {
         }
         Vector2 HealthPosition = this.transform.position;
         hp.transform.localScale = new Vector3(health, (float).5, 1);
