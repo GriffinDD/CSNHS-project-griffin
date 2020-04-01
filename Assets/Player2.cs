@@ -33,9 +33,8 @@ public class Player2 : MonoBehaviour
     }
     void Start()
     {
-        hp = GameObject.Find("HealthBar");
-        text = GameObject.Find("HealthText");
-        bullet = GameObject.Find("Bullet");
+        hp = Instantiate(GameObject.Find("HealthBar"));
+        text = Instantiate(GameObject.Find("HealthText"));
         P1 = GameObject.Find("playercube");
         Vector2 P1pos = P1.transform.position;
         this.transform.position = new Vector2(P1pos.x + 1, P1pos.y);
