@@ -35,7 +35,6 @@ public class NewBehaviourScript : MonoBehaviour
             Vector2 position = this.transform.position;
             hp = Instantiate(GameObject.Find("HealthBar"));
             text = Instantiate(GameObject.Find("HealthText"));
-            bullet = GameObject.Find("Bullet");
             rigidbody = GetComponent<Rigidbody2D>();
             Instantiate(hp);
             hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
