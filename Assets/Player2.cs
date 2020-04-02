@@ -35,27 +35,26 @@ public class Player2 : MonoBehaviour
     {
         hp = Instantiate(GameObject.Find("HealthBar"));
         text = Instantiate(GameObject.Find("HealthText"));
-        bullet = GameObject.Find("Bullet");
         P1 = GameObject.Find("playercube");
-        Vector2 P1pos = P1.transform.position;
-        this.transform.position = new Vector2(P1pos.x + 1, P1pos.y);
-        Vector2 position = this.transform.position;
-        rigidbody = GetComponent<Rigidbody2D>();
-        Instantiate(hp);
-        hp.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
-        Instantiate(text);
-        text.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
-        health = (float)10;
-        HealthInt = 10;
-        hp.transform.localScale = new Vector3(health, (float).5, 1);
-        hp.GetComponent<Renderer>().material.color = Color.green;
-        text.GetComponent<TextMesh>().characterSize = (float).2;
-        text.GetComponent<TextMesh>().text = HealthInt.ToString();
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            Vector2 P1pos = P1.transform.position;
+            this.transform.position = new Vector2(P1pos.x + 1, P1pos.y);
+            Vector2 position = this.transform.position;
+            rigidbody = GetComponent<Rigidbody2D>();
+            Instantiate(hp);
+            hp.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
+            Instantiate(text);
+            text.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
+            health = (float)10;
+            HealthInt = 10;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
+            hp.GetComponent<Renderer>().material.color = Color.green;
+            text.GetComponent<TextMesh>().characterSize = (float).2;
+            text.GetComponent<TextMesh>().text = HealthInt.ToString();
         }
         Vector2 HealthPosition = this.transform.position;
         hp.transform.localScale = new Vector3(health, (float).5, 1);
