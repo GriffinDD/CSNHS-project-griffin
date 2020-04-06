@@ -6,7 +6,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     Rigidbody2D rigidbody;
     public bool check = false;
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     public GameObject hp;
     public GameObject text;
     public float health;
@@ -32,6 +32,7 @@ public class NewBehaviourScript : MonoBehaviour
     }
         void Start()
         {
+            bulletPrefab = GameObject.Find("bulletPrefab");
             Vector2 position = this.transform.position;
             hp = Instantiate(GameObject.Find("HealthBar"));
             text = Instantiate(GameObject.Find("HealthText"));
@@ -89,14 +90,14 @@ public class NewBehaviourScript : MonoBehaviour
                 {
                     Vector2 newpos = new Vector2(xpos + (float).5, ypos);
                     GameObject clone;
-                    clone = Instantiate(bullet);
+                    clone = (GameObject)Instantiate(bulletPrefab);
                     clone.transform.position = newpos;
                     clone.GetComponent<Rigidbody2D>().velocity = 40 * transform.localScale.x * clone.transform.right;
                 } else if (face == 1)
                 {
                     Vector2 newpos = new Vector2(xpos - (float).5, ypos);
                     GameObject clone;
-                    clone = Instantiate(bullet);
+                    clone = Instantiate(bulletPrefab);
                     clone.transform.position = newpos;
                     clone.GetComponent<Rigidbody2D>().velocity = 40 * transform.localScale.x * clone.transform.right * -1;
                 }
