@@ -1573,7 +1573,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: 0
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 461159967066421876, guid: f30a2bccf20b83546a366184e7c2808a,
+    type: 3}
   hp: {fileID: 0}
   text: {fileID: 0}
   health: 0
