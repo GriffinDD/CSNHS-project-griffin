@@ -4,7 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - bullet: {instanceID: 0}
+  - bulletPrefab: {instanceID: 0}
   - hp: {instanceID: 0}
   - text: {instanceID: 0}
   executionOrder: 0
