@@ -9,11 +9,12 @@ public class BossBehavior : MonoBehaviour
     int saver;
     float scale = 1;
     public GameObject lazer;
+    public GameObject clone;
     public float aimTime;
     // Start is called before the first frame update
     void Start()
     {
-        lazer = GameObject.Find("Lazer");
+        clone = Instantiate(lazer);
     }
 
     // Update is called once per frame
@@ -33,14 +34,14 @@ public class BossBehavior : MonoBehaviour
             position.y = (float)-.25 + (float)(rando * scale);
             this.transform.position = position;
             aimTime = Time.time;
-            lazer.transform.position = new Vector2(this.transform.position.x - 7, this.transform.position.y);
-            lazer.transform.localScale = new Vector2((float)13.40155, (float)0.343154);
-            lazer.GetComponent<Renderer>().material.color = Color.red;
+            clone.transform.position = new Vector2(this.transform.position.x - 7, this.transform.position.y);
+            clone.transform.localScale = new Vector2((float)13.40155, (float)0.343154);
+            clone.GetComponent<Renderer>().material.color = Color.red;
 
         }else
         {
-            lazer.transform.position = new Vector2((float)-3.64,(float)3.39);
-            lazer.transform.localScale = new Vector2(0,0);
+            clone.transform.position = new Vector2((float)-3.64,(float)3.39);
+            clone.transform.localScale = new Vector2(0,0);
         }
     }
 }

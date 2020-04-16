@@ -6,7 +6,7 @@ public class Player2 : MonoBehaviour
 {
     Rigidbody2D rigidbody;
     public bool check = false;
-    public GameObject bullet;
+    public GameObject bulletPrefab;
     public GameObject hp;
     public GameObject text;
     public GameObject P1;
@@ -63,14 +63,14 @@ public class Player2 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Vector2 position = this.transform.position;
-            position.x = position.x - (float).02;
+            position.x = position.x - (float).025;
             this.transform.position = position;
             face = 1;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Vector2 position = this.transform.position;
-            position.x = position.x + (float).02;
+            position.x = position.x + (float).025;
             this.transform.position = position;
             face = 0;
         }
@@ -96,7 +96,7 @@ public class Player2 : MonoBehaviour
             {
                 Vector2 newpos = new Vector2(xpos + (float).5, ypos);
                 GameObject clone;
-                clone = Instantiate(bullet);
+                clone = Instantiate(bulletPrefab);
                 clone.transform.position = newpos;
                 clone.GetComponent<Rigidbody2D>().velocity = 40 * transform.localScale.x * clone.transform.right;
             }
@@ -104,7 +104,7 @@ public class Player2 : MonoBehaviour
             {
                 Vector2 newpos = new Vector2(xpos - (float).5, ypos);
                 GameObject clone;
-                clone = Instantiate(bullet);
+                clone = Instantiate(bulletPrefab);
                 clone.transform.position = newpos;
                 clone.GetComponent<Rigidbody2D>().velocity = 40 * transform.localScale.x * clone.transform.right * -1;
             }

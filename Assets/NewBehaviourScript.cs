@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject hp;
     public GameObject text;
     public float health;
+    public int bossFight;
     public int HealthInt;
     public float hplocation;
     public float face = 0;
@@ -25,9 +27,16 @@ public class NewBehaviourScript : MonoBehaviour
             HealthInt = HealthInt - 1;
             health = health - 1;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
-            hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
-            text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if(bossFight != 1)
+            {
+                hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
+                text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
+            }
+            if(health <= 0)
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene()."Level1");
+            }
         }
     }
         void Start()
@@ -37,33 +46,43 @@ public class NewBehaviourScript : MonoBehaviour
             text = Instantiate(GameObject.Find("HealthText"));
             rigidbody = GetComponent<Rigidbody2D>();
             Instantiate(hp);
-            hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
             Instantiate(text);
             health = (float)10;
             HealthInt = 10;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             hp.GetComponent<Renderer>().material.color = Color.green;
-            text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
             text.GetComponent<TextMesh>().characterSize = (float).2;
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if(bossFight == 1)
+        {
+            hp.transform.position = new Vector3((float)-4.6, (float)4.7, (float)-4.116654);
+            text.transform.position = new Vector2((float)-4.6, (float)4.7);
+        }
+        else
+        {
+            hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
+            text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
+        }
         }
         void Update()
         {
-        Vector2 HealthPosition = this.transform.position;
-        hp.transform.localScale = new Vector3(health, (float).5, 1);
-        hp.transform.position = new Vector3(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577, (float)-4.116654);
-        text.transform.position = new Vector2(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577);
+        if(bossFight != 1) {
+            Vector2 HealthPosition = this.transform.position;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
+            hp.transform.position = new Vector3(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577, (float)-4.116654);
+            text.transform.position = new Vector2(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577);
+        }
         if (Input.GetKey(KeyCode.A))
             {
                 Vector2 position = this.transform.position;
-                position.x = position.x - (float).02;
+                position.x = position.x - (float).025;
                 this.transform.position = position;
                 face = 1;
             }
             if (Input.GetKey(KeyCode.D))
             {
                 Vector2 position = this.transform.position;
-                position.x = position.x + (float).02;
+                position.x = position.x + (float).025;
                 this.transform.position = position;
                 face = 0;
             }

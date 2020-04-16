@@ -18,7 +18,7 @@ public class bulletScript : MonoBehaviour
             Destroy(this.gameObject);
         }else if(collision.gameObject.tag == "Bullet")
         {
-
+            Destroy(this.gameObject);
         }
         else
         {
@@ -29,8 +29,6 @@ public class bulletScript : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        bullet = GameObject.Find("Bullet");
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
     }
     // Update is called once per frame
     void Update()

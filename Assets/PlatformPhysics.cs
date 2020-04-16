@@ -9,7 +9,7 @@ public class PlatformPhysics : MonoBehaviour
     public float dropTime;
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("playercube");
 
 
     }
