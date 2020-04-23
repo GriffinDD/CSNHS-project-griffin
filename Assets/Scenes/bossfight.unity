@@ -702,6 +702,7 @@ MonoBehaviour:
   text: {fileID: 0}
   P1: {fileID: 0}
   health: 0
+  Active: 0
   HealthInt: 0
   hplocation: 0
   face: 0
@@ -805,7 +806,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653297591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.76, y: -8.35, z: 0}
+  m_LocalPosition: {x: -22.76, y: -50, z: 0}
   m_LocalScale: {x: 0.2, y: 0.4, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1168,6 +1169,8 @@ MonoBehaviour:
   text: {fileID: 0}
   health: 0
   bossFight: 1
+  StartX: 0
+  StartY: 0
   HealthInt: 0
   hplocation: 0
   face: 0

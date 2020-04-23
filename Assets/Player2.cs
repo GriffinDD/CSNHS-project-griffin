@@ -11,6 +11,7 @@ public class Player2 : MonoBehaviour
     public GameObject text;
     public GameObject P1;
     public float health;
+    public int Active;
     public int HealthInt;
     public float hplocation;
     public float face = 0;
@@ -39,21 +40,35 @@ public class Player2 : MonoBehaviour
     }
     void Update()
     {
+        Vector2 position = this.transform.position;
         if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Active = 1;
+        }
+        if(Active == 1)
         {
             Vector2 P1pos = P1.transform.position;
             this.transform.position = new Vector2(P1pos.x + 1, P1pos.y);
-            Vector2 position = this.transform.position;
             rigidbody = GetComponent<Rigidbody2D>();
             Instantiate(hp);
             hp.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
             Instantiate(text);
             text.transform.position = new Vector3(P1pos.x + (float)4.5, P1pos.y + (float)4.577, (float)-4.116654);
-            health = (float)10;
-            HealthInt = 10;
+            health = (float)12;
+            HealthInt = 12;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             hp.GetComponent<Renderer>().material.color = Color.green;
             text.GetComponent<TextMesh>().characterSize = (float).2;
+            text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            Active = 2;
+        }
+        if (position.y < (float)-50 && Active == 2)
+        {
+            Vector2 P1pos = P1.transform.position;
+            this.transform.position = new Vector2(P1pos.x + 1, P1pos.y);
+            HealthInt = HealthInt - 2;
+            health = health - 2;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
         }
         Vector2 HealthPosition = this.transform.position;
@@ -62,14 +77,12 @@ public class Player2 : MonoBehaviour
         text.transform.position = new Vector2(HealthPosition.x + (float)4.5, HealthPosition.y + (float)4.577);
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Vector2 position = this.transform.position;
             position.x = position.x - (float).025;
             this.transform.position = position;
             face = 1;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector2 position = this.transform.position;
             position.x = position.x + (float).025;
             this.transform.position = position;
             face = 0;
@@ -89,7 +102,6 @@ public class Player2 : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
-            Vector2 position = this.transform.position;
             float xpos = position.x;
             float ypos = position.y;
             if (face == 0)

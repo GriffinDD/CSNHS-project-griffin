@@ -12,6 +12,8 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject text;
     public float health;
     public int bossFight;
+    public float StartX;
+    public float StartY;
     public int HealthInt;
     public float hplocation;
     public float face = 0;
@@ -35,13 +37,15 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if(health <= 0)
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene()."Level1");
+                SceneManager.LoadScene("Level1.unity");
             }
         }
     }
         void Start()
         {
             Vector2 position = this.transform.position;
+            StartX = position.x;
+            StartY = position.y;
             hp = Instantiate(GameObject.Find("HealthBar"));
             text = Instantiate(GameObject.Find("HealthText"));
             rigidbody = GetComponent<Rigidbody2D>();
@@ -66,7 +70,25 @@ public class NewBehaviourScript : MonoBehaviour
         }
         void Update()
         {
-        if(bossFight != 1) {
+        Vector2 position = this.transform.position;
+        if(position.y < (float)-50)
+        {
+            this.transform.position = new Vector2(StartX,StartY);
+            HealthInt = HealthInt - 2;
+            health = health - 2;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
+            text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if (bossFight != 1)
+            {
+                hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
+                text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
+            }
+            if (health <= 0)
+            {
+                SceneManager.LoadScene("Level1.unity");
+            }
+        }
+        if (bossFight != 1) {
             Vector2 HealthPosition = this.transform.position;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             hp.transform.position = new Vector3(HealthPosition.x - (float)4.5, HealthPosition.y + (float)4.577, (float)-4.116654);
@@ -74,14 +96,12 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
             {
-                Vector2 position = this.transform.position;
                 position.x = position.x - (float).025;
                 this.transform.position = position;
                 face = 1;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                Vector2 position = this.transform.position;
                 position.x = position.x + (float).025;
                 this.transform.position = position;
                 face = 0;
@@ -101,7 +121,6 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Vector2 position = this.transform.position;
                 float xpos = position.x;
                 float ypos = position.y;
                 if (face == 0)
