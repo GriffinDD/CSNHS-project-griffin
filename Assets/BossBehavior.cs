@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBehavior : MonoBehaviour
 {
     Random rnd = new Random();
-    int rando;
+    int rando = 5;
     int saver;
     float scale = 1;
     public GameObject lazer;
@@ -20,19 +20,19 @@ public class BossBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time % 5 < .1 && Time.time % 5 >= 0)
+        Vector2 position = this.transform.position;
+        if (Time.time % 5 < .01 && Time.time % 5 >= 0)
         {
-            rando = Random.Range(0, 3);
             saver = rando;
+            rando = Random.Range(0, 3);
             while (rando == saver)
             {
                 rando = Random.Range(0, 3);
             }
-        }
-        if (((int)Time.time % 10 >= 3 && (int)Time.time % 10 < 5) || (int)Time.time % 10 >= 8) { 
-            Vector2 position = this.transform.position;
             position.y = (float)-.25 + (float)(rando * scale);
             this.transform.position = position;
+        }
+        if (((int)Time.time % 10 >= 3 && (int)Time.time % 10 < 5) || (int)Time.time % 10 >= 8) { 
             aimTime = Time.time;
             clone.transform.position = new Vector2(this.transform.position.x - 7, this.transform.position.y);
             clone.transform.localScale = new Vector2((float)13.40155, (float)0.343154);
