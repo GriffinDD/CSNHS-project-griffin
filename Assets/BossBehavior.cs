@@ -10,8 +10,20 @@ public class BossBehavior : MonoBehaviour
     float scale = 1;
     public GameObject lazer;
     public GameObject clone;
+    public int health = 30;
     public float aimTime;
     // Start is called before the first frame update
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            health = health - 1;
+        }
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     void Start()
     {
         clone = Instantiate(lazer);
@@ -34,13 +46,13 @@ public class BossBehavior : MonoBehaviour
         }
         if (((int)Time.time % 10 >= 3 && (int)Time.time % 10 < 5) || (int)Time.time % 10 >= 8) { 
             aimTime = Time.time;
-            clone.transform.position = new Vector2(this.transform.position.x - 7, this.transform.position.y);
+            clone.transform.position = new Vector2(this.transform.position.x - 7, this.transform.position.y - (float).11);
             clone.transform.localScale = new Vector2((float)13.40155, (float)0.343154);
             clone.GetComponent<Renderer>().material.color = Color.red;
 
         }else
         {
-            clone.transform.position = new Vector2((float)-3.64,(float)3.39);
+            clone.transform.position = new Vector2((float)50,(float)50);
             clone.transform.localScale = new Vector2(0,0);
         }
     }

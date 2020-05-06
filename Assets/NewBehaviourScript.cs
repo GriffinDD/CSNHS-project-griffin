@@ -39,6 +39,21 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 SceneManager.LoadScene("Level1.unity");
             }
+        }else if(collision.gameObject.tag == "Lazer")
+        {
+            HealthInt = HealthInt - 3;
+            health = health - 3;
+            hp.transform.localScale = new Vector3(health, (float).5, 1);
+            text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if (bossFight != 1)
+            {
+                hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
+                text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
+            }
+            if (health <= 0)
+            {
+                SceneManager.LoadScene("Level1.unity");
+            }
         }
     }
         void Start()

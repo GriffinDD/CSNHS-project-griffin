@@ -3,7 +3,9 @@ guid: e19b1f715f00ea84382c37d9df6e3421
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - clone: {fileID: 2810257232288200282, guid: 642dca819bdbd4d49838d0406346b38b, type: 3}
+  - Lazer: {fileID: 2810257232288200282, guid: 642dca819bdbd4d49838d0406346b38b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
