@@ -1019,6 +1019,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   text: {fileID: 0}
   health: 0
+  level: 3
   bossFight: 1
   StartX: 0
   StartY: 0

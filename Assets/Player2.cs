@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Player2 : MonoBehaviour
@@ -10,6 +11,7 @@ public class Player2 : MonoBehaviour
     public GameObject hp;
     public GameObject text;
     public GameObject P1;
+    public int Level;
     public float health;
     public int Active;
     public int HealthInt;
@@ -30,6 +32,25 @@ public class Player2 : MonoBehaviour
             hp.transform.position = new Vector3(position.x + (float)4.5, position.y + (float)4.577, (float)-4.116654);
             text.transform.position = new Vector2(position.x + (float)4.5, position.y + (float)4.577);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if (health <= 0)
+            {
+                if (Level == 1)
+                {
+                    SceneManager.LoadScene("Level1.unity");
+                }
+                else if (Level == 2)
+                {
+                    SceneManager.LoadScene("Level2.unity");
+                }
+                else if (Level == 3)
+                {
+                    SceneManager.LoadScene("Level3.unity");
+                }
+                else if (Level == 4)
+                {
+                    SceneManager.LoadScene("Level4.unity");
+                }
+            }
         }
     }
     void Start()

@@ -807,6 +807,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   text: {fileID: 0}
   P1: {fileID: 0}
+  Level: 1
   health: 0
   Active: 0
   HealthInt: 0
@@ -1479,6 +1480,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   text: {fileID: 0}
   health: 0
+  level: 1
   bossFight: 0
   StartX: 0
   StartY: 0

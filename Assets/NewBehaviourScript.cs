@@ -11,6 +11,7 @@ public class NewBehaviourScript : MonoBehaviour
     public GameObject hp;
     public GameObject text;
     public float health;
+    public int level;
     public int bossFight;
     public float StartX;
     public float StartY;
@@ -37,7 +38,29 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if(health <= 0)
             {
-                SceneManager.LoadScene("Level1.unity");
+                if (level == 1)
+                {
+                    SceneManager.LoadScene("Level1.unity");
+                }else if (level == 2)
+                {
+                    SceneManager.LoadScene("Level2.unity");
+                }
+                else if (level == 3)
+                {
+                    SceneManager.LoadScene("bossfight.unity");
+                }
+                else if (level == 4)
+                {
+                    SceneManager.LoadScene("Level3.unity");
+                }
+                else if (level == 5)
+                {
+                    SceneManager.LoadScene("Level4.unity");
+                }
+                else if (level == 6)
+                {
+                    SceneManager.LoadScene("Boss2.unity");
+                }
             }
         }else if(collision.gameObject.tag == "Lazer")
         {
