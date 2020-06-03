@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
@@ -21,7 +22,7 @@ public class BossBehavior : MonoBehaviour
         }
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene("Level3.unity");
         }
     }
     void Start()

@@ -52,6 +52,25 @@ public class Player2 : MonoBehaviour
                 }
             }
         }
+        else if (collision.gameObject.tag == "EndDoor")
+        {
+            if (Level == 1)
+            {
+                SceneManager.LoadScene("Level2.unity");
+            }
+            else if (Level == 2)
+            {
+                SceneManager.LoadScene("bossfight.unity");
+            }
+            else if (Level == 4)
+            {
+                SceneManager.LoadScene("Level4.unity");
+            }
+            else if (Level == 5)
+            {
+                SceneManager.LoadScene("Boss2.unity");
+            }
+        }
     }
     void Start()
     {
@@ -91,6 +110,33 @@ public class Player2 : MonoBehaviour
             health = health - 2;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
+            if (health <= 0)
+            {
+                if (Level == 1)
+                {
+                    SceneManager.LoadScene("Level1.unity");
+                }
+                else if (Level == 2)
+                {
+                    SceneManager.LoadScene("Level2.unity");
+                }
+                else if (Level == 3)
+                {
+                    SceneManager.LoadScene("bossfight.unity");
+                }
+                else if (Level == 4)
+                {
+                    SceneManager.LoadScene("Level3.unity");
+                }
+                else if (Level == 5)
+                {
+                    SceneManager.LoadScene("Level4.unity");
+                }
+                else if (Level == 6)
+                {
+                    SceneManager.LoadScene("Boss2.unity");
+                }
+            }
         }
         Vector2 HealthPosition = this.transform.position;
         hp.transform.localScale = new Vector3(health, (float).5, 1);

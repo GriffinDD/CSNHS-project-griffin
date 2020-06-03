@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Bullet
   - Lazer
+  - EndDoor
   layers:
   - Default
   - TransparentFX

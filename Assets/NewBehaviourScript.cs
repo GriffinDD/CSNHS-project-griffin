@@ -31,17 +31,18 @@ public class NewBehaviourScript : MonoBehaviour
             health = health - 1;
             hp.transform.localScale = new Vector3(health, (float).5, 1);
             text.GetComponent<TextMesh>().text = HealthInt.ToString();
-            if(bossFight != 1)
+            if (bossFight != 1)
             {
                 hp.transform.position = new Vector3(position.x - (float)4.5, position.y + (float)4.577, (float)-4.116654);
                 text.transform.position = new Vector2(position.x - (float)4.5, position.y + (float)4.577);
             }
-            if(health <= 0)
+            if (health <= 0)
             {
                 if (level == 1)
                 {
                     SceneManager.LoadScene("Level1.unity");
-                }else if (level == 2)
+                }
+                else if (level == 2)
                 {
                     SceneManager.LoadScene("Level2.unity");
                 }
@@ -62,7 +63,8 @@ public class NewBehaviourScript : MonoBehaviour
                     SceneManager.LoadScene("Boss2.unity");
                 }
             }
-        }else if(collision.gameObject.tag == "Lazer")
+        }
+        else if (collision.gameObject.tag == "Lazer")
         {
             HealthInt = HealthInt - 3;
             health = health - 3;
@@ -75,10 +77,29 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if (health <= 0)
             {
-                SceneManager.LoadScene("Level1.unity");
+                SceneManager.LoadScene("bossfight.unity");
             }
         }
-    }
+        else if (collision.gameObject.tag == "EndDoor")
+        {
+            if (level == 1)
+            {
+                SceneManager.LoadScene("Level2.unity");
+            }
+            else if (level == 2)
+            {
+                SceneManager.LoadScene("bossfight.unity");
+            }
+            else if (level == 4)
+            {
+                SceneManager.LoadScene("Level4.unity");
+            }
+            else if (level == 5)
+            {
+                SceneManager.LoadScene("Boss2.unity");
+            }
+        }
+        }
         void Start()
         {
             Vector2 position = this.transform.position;
@@ -123,7 +144,30 @@ public class NewBehaviourScript : MonoBehaviour
             }
             if (health <= 0)
             {
-                SceneManager.LoadScene("Level1.unity");
+                if (level == 1)
+                {
+                    SceneManager.LoadScene("Level1.unity");
+                }
+                else if (level == 2)
+                {
+                    SceneManager.LoadScene("Level2.unity");
+                }
+                else if (level == 3)
+                {
+                    SceneManager.LoadScene("bossfight.unity");
+                }
+                else if (level == 4)
+                {
+                    SceneManager.LoadScene("Level3.unity");
+                }
+                else if (level == 5)
+                {
+                    SceneManager.LoadScene("Level4.unity");
+                }
+                else if (level == 6)
+                {
+                    SceneManager.LoadScene("Boss2.unity");
+                }
             }
         }
         if (bossFight != 1) {
